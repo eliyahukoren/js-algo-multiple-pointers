@@ -1,0 +1,17 @@
+{
+	"name": "JS_Algo_Mupltiple_Pointers",
+	"description": "Javascript Algorithms and Data Structures Masterclass course",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Eliyahu Koren <elik.koren@gmail.com>",
+	"license": "MIT",
+	"categories": [
+		"LeetCode",
+		"Javascript",
+		"algorithm",
+		"Jest"
+	],
+	"scripts": {
+		"test": "jest"
+	}
+}
