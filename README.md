@@ -16,9 +16,13 @@ Implement a function called, **areThereDuplicates** which accepts a variable num
 Examples:
 
 areThereDuplicates(1, 2, 3) // false
+
 areThereDuplicates(1, 2, 2) // true 
+
 areThereDuplicates('a', 'b', 'c', 'a') // true 
+
 Restrictions:
 
 Time - O(n)
+
 Space - O(n)
