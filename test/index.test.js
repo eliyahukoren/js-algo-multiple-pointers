@@ -1,4 +1,12 @@
-const { areThereDuplicates, areThereDuplicatesOneLiner, countUniqueValues, sumZero } = require("../index");
+const {
+	areThereDuplicates,
+	areThereDuplicatesOneLiner,
+	countUniqueValues,
+	sumZero,
+	averagePair,
+	isSubsequence,
+	isSubsequenceV2,
+} = require("../index");
 
 describe("Are There Duplicates - Multiple Pointers", () => {
 	describe("Test if function is exists", () => {
@@ -22,7 +30,6 @@ describe("Are There Duplicates - Multiple Pointers", () => {
 			}
 		);
 	});
-
 });
 
 describe("Are There Duplicates - One Liner", () => {
@@ -48,7 +55,6 @@ describe("Are There Duplicates - One Liner", () => {
 		);
 	});
 });
-
 
 describe("Count Unique Values - Multiple Pointers", () => {
 	describe("Test if function is exists", () => {
@@ -101,6 +107,54 @@ describe("Sum Zero - Multiple Pointers", () => {
 			"sumZero returns $expected when inspect $arr",
 			({ arr, expected }) => {
 				expect(sumZero(arr)).toEqual(expected);
+			}
+		);
+	});
+});
+
+describe("Average Pairs - Multiple Pointers", () => {
+	describe("Test if function is exists", () => {
+		it("Function exists", () => {
+			expect(averagePair).toBeDefined();
+		});
+	});
+
+	describe("Average pairs", () => {
+		test.each`
+			arr                               | target | expected
+			${[1, 2, 3]}                      | ${2.5} | ${true}
+			${[1, 3, 3, 5, 6, 7, 10, 12, 19]} | ${8}   | ${true}
+			${[-1, 0, 3, 4, 5, 6]}            | ${4.1} | ${false}
+			${[]}                             | ${4}   | ${false}
+		`(
+			"averagePair returns $expected when inspect $arr with $target",
+			({ arr, target, expected }) => {
+				expect(averagePair(arr, target)).toEqual(expected);
+			}
+		);
+	});
+});
+
+describe("Is Subsequence - Multiple Pointers", () => {
+	describe("Test if function is exists", () => {
+		it("Function exists", () => {
+			expect(isSubsequence).toBeDefined();
+		});
+	});
+
+	describe("Average pairs", () => {
+		test.each`
+			str        | target            | expected
+			${"hello"} | ${"hello world!"} | ${true}
+			${"sing"}  | ${"sting"}        | ${true}
+			${"abc"}   | ${"abracadabra"}  | ${true}
+			${"abc"}   | ${"acb"}          | ${false}
+		`(
+			"isSubsequence returns $expected, because '$str' subsequence in '$target'",
+			({ str, target, expected }) => {
+				expect(isSubsequence(str, target)).toEqual(expected);
+				expect(isSubsequenceV2(str, target)).toEqual(expected);
+
 			}
 		);
 	});
