@@ -3,6 +3,7 @@ const {
 	factorial,
 	productOfArray,
 	recursiveRange,
+	fib
 } = require("../recursion");
 
 
@@ -98,5 +99,26 @@ describe("Recursive Range - Recursion", () => {
 				expect(recursiveRange(num)).toEqual(expected);
 			}
 		);
+	});
+});
+
+describe("Fibonacci - Recursion", () => {
+	describe("Test if function is exists", () => {
+		it("Function exists", () => {
+			expect(fib).toBeDefined();
+		});
+	});
+
+	describe("Check Fibonacci", () => {
+		test.each`
+			num   | expected
+			${4}  | ${3}
+			${10} | ${55}
+			${28} | ${317_811}
+			${35} | ${9_227_465}
+			${37} | ${24_157_817}
+		`("fib with $num expect to return $expected", ({ num, expected }) => {
+			expect(fib(num)).toEqual(expected);
+		});
 	});
 });

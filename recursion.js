@@ -33,9 +33,19 @@ const countDown = (n) => {
 	countDown(n);
 }
 
+const fib = (num, memo={}) => {
+	if( num <= 2) return 1;
+	if( num in memo ) return memo[num];
+
+	memo[num - 2] = fib(num - 2);
+	memo[num - 1] = fib(num - 1);
+	return memo[num - 2] + memo[num - 1];
+}
+
 module.exports = {
 	power,
 	factorial,
 	productOfArray,
 	recursiveRange,
+	fib
 };
