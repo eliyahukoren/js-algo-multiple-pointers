@@ -3,7 +3,8 @@ const {
 	factorial,
 	productOfArray,
 	recursiveRange,
-	fib
+	fib, 
+	fibA
 } = require("../recursion");
 
 
@@ -117,8 +118,31 @@ describe("Fibonacci - Recursion", () => {
 			${28} | ${317_811}
 			${35} | ${9_227_465}
 			${37} | ${24_157_817}
+			${50} | ${12_586_269_025}
 		`("fib with $num expect to return $expected", ({ num, expected }) => {
 			expect(fib(num)).toEqual(expected);
+		});
+	});
+});
+
+describe("Fibonacci - NOT Recursion", () => {
+	describe("Test if function is exists", () => {
+		it("Function exists", () => {
+			expect(fibA).toBeDefined();
+		});
+	});
+
+	describe("Check NOT Recursion Fibonacci", () => {
+		test.each`
+			num   | expected
+			${4}  | ${3}
+			${10} | ${55}
+			${28} | ${317_811}
+			${35} | ${9_227_465}
+			${37} | ${24_157_817}
+			${50} | ${12_586_269_025}
+		`("fib with $num expect to return $expected", ({ num, expected }) => {
+			expect(fibA(num)).toEqual(expected);
 		});
 	});
 });

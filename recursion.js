@@ -34,12 +34,33 @@ const countDown = (n) => {
 }
 
 const fib = (num, memo={}) => {
-	if( num <= 2) return 1;
 	if( num in memo ) return memo[num];
+	if( num <= 2) return 1;
 
-	memo[num - 2] = fib(num - 2);
-	memo[num - 1] = fib(num - 1);
-	return memo[num - 2] + memo[num - 1];
+	memo[num - 1] = fib(num - 1, memo);
+	memo[num - 2] = fib(num - 2, memo);
+	return memo[num - 1] + memo[num - 2];
+}
+
+const fibA = (pos) => {
+	if (pos === 1 || pos === 2) return 1;
+
+	let min = 1;
+	let max = 1;
+	let value = 0;
+
+	// start position on fib
+	let cursor = 2;
+
+	while(true){
+		cursor ++;
+		value = min + max;
+
+		if( cursor === pos) return value;
+
+		min = Math.max(max, min);
+		max = Math.max(max, value);
+	}
 }
 
 module.exports = {
@@ -47,5 +68,6 @@ module.exports = {
 	factorial,
 	productOfArray,
 	recursiveRange,
-	fib
+	fib,
+	fibA,
 };
