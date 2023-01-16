@@ -25,6 +25,25 @@ const graphObj1 = {
 	t:[]
 }
 
+const graphComplex = {
+	a: ["j"],
+	b: ["l", "f"],
+	c: ["i", "d"],
+	d: [],
+	e: ["h"],
+	f: [],
+	g: ["d"],
+	j: ["e"],
+	h: ["f", "k"],
+	k: ["i"],
+	i: ["g"],
+	l: ["n"],
+	m: ["b","c","p","l"],
+	n: [],
+	o: [],
+	p: ["o"],
+};
+
 describe("Depth Has Path - Graph", () => {
 	describe("Test if function is exists", () => {
 		it("Function exists", () => {
@@ -44,6 +63,13 @@ describe("Depth Has Path - Graph", () => {
 			expect(depthHasPath(graphObj1, "b", "c")).toEqual(false);
 			expect(depthHasPath(graphObj1, "a", "h")).toEqual(true);
 			expect(depthHasPath(graphObj1, "a", "c")).toEqual(false);
+
+			expect(depthHasPath(graphComplex, "a", "f")).toEqual(true);
+			expect(depthHasPath(graphComplex, "a", "d")).toEqual(true);
+			expect(depthHasPath(graphComplex, "m", "d")).toEqual(true);
+
+			expect(depthHasPath(graphComplex, "a", "m")).toEqual(false);
+			expect(depthHasPath(graphComplex, "b", "c")).toEqual(false);
 		})
 
 		it("Unit test breadth has path", () => {
@@ -56,6 +82,13 @@ describe("Depth Has Path - Graph", () => {
 			expect(breadthHasPath(graphObj1, "b", "c")).toEqual(false);
 			expect(breadthHasPath(graphObj1, "a", "h")).toEqual(true);
 			expect(breadthHasPath(graphObj1, "a", "c")).toEqual(false);
+
+			expect(breadthHasPath(graphComplex, "a", "f")).toEqual(true);
+			expect(breadthHasPath(graphComplex, "a", "d")).toEqual(true);
+			expect(breadthHasPath(graphComplex, "m", "d")).toEqual(true);
+
+			expect(breadthHasPath(graphComplex, "a", "m")).toEqual(false);
+			expect(breadthHasPath(graphComplex, "b", "c")).toEqual(false);
 
 		});
 	});
